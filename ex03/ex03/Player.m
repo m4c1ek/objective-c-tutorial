@@ -25,6 +25,7 @@
 - (void) kickBallToHell {
     NSObject* ball = [[NSObject alloc] init];
     ball = [[NSObject alloc] init];
+    [ball release];
     NSLog(@"player %@ kicked the ball to hell", self.name);
 }
 
