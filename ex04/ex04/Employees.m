@@ -34,13 +34,16 @@
 
 - (void)getFeedsFrom:(NSURL *)feedsLocation withCompletionHandler:(void (^)(EmployeesResponse *))completionHandler {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        EmployeesResponse* er = [[EmployeesResponse alloc] init];
-        id feeds = [[JSONDecoder decoder] parseJSONData:[NSData dataWithContentsOfURL:feedsLocation]];
-        NSAssert([feeds isKindOfClass:[NSDictionary class]], @"not a dictionary");
-        er.feeds = [feeds objectForKey:@"file"];
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            completionHandler(er);
-        });
+        @try {
+            EmployeesResponse* er = [[EmployeesResponse alloc] init];
+            id feeds = [[JSONDecoder decoder] parseJSONData:[NSData dataWithContentsOfURL:feedsLocation]];
+            NSAssert([feeds isKindOfClass:[NSDictionary class]], @"not a dictionary");
+            er.feeds = [feeds objectForKey:@"file"];
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                completionHandler(er);
+            });
+        }
+        @catch (NSException *exception) {}
     });
 }
 
@@ -50,7 +53,9 @@
         dispatch_sync(dispatch_get_main_queue(), ^{
             NSData* imageData = [NSData dataWithContentsOfURL:imageUrl];
             UIImage* image = [UIImage imageWithData:imageData];
-            completionHandler(image);
+            if (image) {
+                completionHandler(image);
+            }
         });
     });
     
