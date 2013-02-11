@@ -16,10 +16,11 @@ int main(int argc, const char * argv[])
         player2  = [[Player alloc] initWithAge:100 andName:@"Krzysztof Ibisz"];
         [player2 kickBall];
         [player2 kickBallToHell];
-        [player2 release];// release here means that the objects ownership is released, some time it will be dealloced
+        [player2 release];// release here means that the objects ownership is released
         [player2 kickBall]; // why no EXC_BAD_ACCESS here??
     }
-    [player2 kickBall]; // EXC_BAD_ACCESS - call method on dealloced object
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.5]];
+    [player2 kickBall]; // EXC_BAD_ACCESS - call method on dealloced object, or maybe not?
     
     NSMutableArray* players = [NSMutableArray array]; // autoreleased
     [players addObject:player1];
