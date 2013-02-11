@@ -1,12 +1,17 @@
-#import <Foundation/Foundation.h>
+//
+//  EmployeesResponse.h
+//  ex04
+//
+//  Created by Walczynski, Maciej on 2/11/13.
+//  Copyright (c) 2013 Walczynski, Maciej. All rights reserved.
+//
 
+#import <Foundation/Foundation.h>
 
 @interface EmployeesResponse : NSObject
 
-@property(nonatomic, strong) NSDictionary *feeds;
-@property(nonatomic, strong) NSError *error;
-
-- (id)initWithFeeds:(NSDictionary *) fs;
-- (id)initWithError:(NSError *)er;
+@property (strong) NSArray* feeds;
 
 @end
+
+

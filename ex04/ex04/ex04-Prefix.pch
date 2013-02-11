@@ -1,7 +1,7 @@
 //
-// Prefix header for all source files of the 'Employees' target in the 'Employees' project
+// Prefix header for all source files of the 'ex04' target in the 'ex04' project
 //
 
 #ifdef __OBJC__
-
+    #import <Foundation/Foundation.h>
 #endif
