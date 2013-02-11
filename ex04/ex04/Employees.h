@@ -17,6 +17,9 @@ enum  {
 
 @interface Employees : NSObject
 
+@property(nonatomic, strong) NSMutableDictionary *images;
+
 - (void)getFeedsFrom:(NSURL *)feedsLocation withCompletionHandler:(void (^)(EmployeesResponse *))completionHandler;
+- (void)getEmployeeImage :(NSDictionary *)employee withCompletionHandler:(void (^)(UIImage*) )completionHandler;
 
 @end
