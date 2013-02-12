@@ -29,7 +29,7 @@
 {
     [super viewDidLoad];
     self.images = [[NSMutableDictionary alloc] init];
-    NSURL *feedsUrl = [NSURL URLWithString:@"http://localhost:8080/contacts.json"];
+    NSURL *feedsUrl = [NSURL URLWithString:@"http://192.168.10.245:3000/contacts.json"];
     [[[Employees alloc] init] getFeedsFrom:feedsUrl withCompletionHandler:^(EmployeesResponse * employeesResponse) {
         self.employees = employeesResponse.feeds;
         [self.tableView reloadData];

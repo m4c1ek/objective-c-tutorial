@@ -9,7 +9,7 @@
 #import "DetailViewController.h"
 
 @interface DetailViewController ()
-    @property IBOutlet UIImageView* imageView;
+    
     - (IBAction) call;
 - (IBAction) mail;
 @end

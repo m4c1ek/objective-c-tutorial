@@ -11,4 +11,5 @@
 @interface DetailViewController : UIViewController
 @property NSDictionary* employeeData;
 @property UIImage* employeeImage;
+@property (weak) IBOutlet UIImageView* imageView;
 @end
